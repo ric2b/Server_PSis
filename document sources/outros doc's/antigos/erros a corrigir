@@ -1,0 +1,5 @@
+1.
+	Quando corremos o timer-10s.cgi começam a aparecer erros 400 com o mesmo 
+	pedido mais tarde (mais óbvio se correres o ab a seguir) deve ter a ver com a forma como matamos o processo
+
+

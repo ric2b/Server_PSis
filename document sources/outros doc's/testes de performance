@@ -1,0 +1,184 @@
+/* 1 accept no main */
+
+Com 50 concorrentes (index.html, 1 milhão de pedidos):
+
+	10 threads:
+	tempo total para correr testes: 172.680 s
+	tempo por pedido (média): 0.173 ms
+
+	128 threads:
+	tempo total para correr testes: 172.800 s
+	tempo por pedido (média):  0.173 ms
+
+	200 threads:
+	tempo total para correr testes: 215.297 s
+	tempo por pedido (média):  0.215 ms
+
+	250 threads:
+	tempo total para correr testes: 243.772 s
+	tempo por pedido (média):  0.244 ms
+
+	300 threads:
+	tempo total para correr testes: 279.476 s
+	tempo por pedido (média):  0.279 ms
+
+		10 threads (sem printf):
+		tempo total para correr testes: 106.839 s
+		tempo por pedido (média): 0.107 ms
+
+		300 threads (sem printf):
+		tempo total para correr testes: 261.646 s
+		tempo por pedido (média): 0.262 ms
+
+Com 128 concorrentes (index.html, 1 milhão de pedidos):
+
+	10 threads:
+	tempo total para correr testes: 172.905 s
+	tempo por pedido (média): 0.173 ms
+
+	128 threads:
+	tempo total para correr testes: 167.325 s
+	tempo por pedido (média): 0.167 ms
+
+	200 threads:
+	tempo total para correr testes: 167.683 s
+	tempo por pedido (média): 0.168 ms
+
+	250 threads:
+	tempo total para correr testes: 190.226 s
+	tempo por pedido (média): 0.190 ms
+
+	300 threads:
+	tempo total para correr testes: 231.965 s 
+	tempo por pedido (média): 0.232 ms
+
+Com 200 concorrentes (index.html, 1 milhão de pedidos):
+
+	10 threads:
+	tempo total para correr testes: 174.721 s
+	tempo por pedido (média): 0.175 ms
+
+	128 threads:
+	tempo total para correr testes: 169.590 s
+	tempo por pedido (média): 0.170 ms
+
+	200 threads:
+	tempo total para correr testes: 166.613 s
+	tempo por pedido (média):  0.167 ms
+
+	250 threads:
+	tempo total para correr testes: 167.681 s
+	tempo por pedido (média):  0.168 ms
+
+	300 threads:
+	tempo total para correr testes: 222.891 s (?? corri outra vez e deu 		186.651 s)
+	tempo por pedido (média):  0.223 ms
+
+		10 threads (sem printf):
+		tempo total para correr testes: 103.980 s
+		tempo por pedido (média): 0.104 ms
+
+		300 threads (sem printf):
+		tempo total para correr testes: 163.399 s
+		tempo por pedido (média): 0.163 ms
+
+Com 500 concorrentes (index.html, 1 milhão de pedidos):
+
+	10 threads: /*erros de broken pipes?...*/
+	tempo total para correr testes:  s
+	tempo por pedido (média): ms
+
+	128 threads:
+	tempo total para correr testes: 168.269 s
+	tempo por pedido (média): 0.168 ms
+
+	200 threads:
+	tempo total para correr testes: 166.842 s
+	tempo por pedido (média): 0.167 ms
+
+	250 threads:
+	tempo total para correr testes: 166.797 s
+	tempo por pedido (média): 0.167 ms
+
+	300 threads:
+	tempo total para correr testes: 168.029 s 
+	tempo por pedido (média): 0.168 ms
+
+/* 1 accept em cada thread */
+
+Com 50 concorrentes (index.html, 1 milhão de pedidos):
+
+	10 threads:
+	tempo total para correr testes: 180.722 s
+	tempo por pedido (média): 0.181 ms
+
+	128 threads:
+	tempo total para correr testes: 177.685 s
+	tempo por pedido (média): 0.178 ms
+
+	200 threads:
+	tempo total para correr testes: 173.836 s
+	tempo por pedido (média): 0.174 ms
+
+	250 threads:
+	tempo total para correr testes: 170.725 s
+	tempo por pedido (média): 0.171 ms
+
+	300 threads:
+	tempo total para correr testes: 169.557 s
+	tempo por pedido (média): 0.170 ms
+
+Com 128 concorrentes (index.html, 1 milhão de pedidos):
+
+	10 threads:
+	tempo total para correr testes: s
+	tempo por pedido (média): ms
+
+	128 threads:
+	tempo total para correr testes: 180.948 s
+	tempo por pedido (média): 0.181 ms
+
+	200 threads:
+	tempo total para correr testes: s
+	tempo por pedido (média): ms
+
+	250 threads:
+	tempo total para correr testes: s
+	tempo por pedido (média):  ms
+
+	300 threads:
+	tempo total para correr testes: s
+	tempo por pedido (média): ms
+
+Com 200 concorrentes (index.html, 1 milhão de pedidos):
+
+	10 threads:
+	tempo total para correr testes: 178.135 s
+	tempo por pedido (média): 0.178 ms
+
+	128 threads:
+	tempo total para correr testes: 179.957 s
+	tempo por pedido (média): 0.180 ms
+
+	200 threads:
+	tempo total para correr testes: 175.444 s
+	tempo por pedido (média):  0.175 ms
+
+	250 threads:
+	tempo total para correr testes: 171.096 s
+	tempo por pedido (média): 0.171 ms
+
+	300 threads:
+	tempo total para correr testes: 169.542 s 
+	tempo por pedido (média): 0.170 ms
+
+		10 threads (sem printf):
+		tempo total para correr testes: 135.026 s
+		tempo por pedido (média): 0.135 ms
+
+		300 threads (sem printf):
+		tempo total para correr testes: 140.524 s
+		tempo por pedido (média): 0.141 ms
+
+
+

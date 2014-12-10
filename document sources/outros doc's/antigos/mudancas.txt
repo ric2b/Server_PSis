@@ -1,0 +1,35 @@
+1.
+	removi o else a seguir à verificação de erro 403 no cgi.c, senão ele nunca corria
+	o executável se o www.config tivesse sido lido com sucesso
+2. 
+	a variável "código" do pedidos.c e cgi.c é agora passada como ponteiro para o 
+	cgi.c a poder alterar se tiver um erro 403
+3. 
+	criei o favicon.ico mas ainda estou a tentar resolver a questão de o programa
+	tentar executar .ico's, .pdf's e outras extensões que deviam dar 415 mas
+	que por os ficheiros terem permissão de execução são tratados como executáveis
+4.
+	acrescentei um semáforo ao fifo
+5.
+	ao fazer o teste do ab, se o numero total de pedidos for maior que o numero
+	de pedidos concorrentes (mesmo se for -n 51 -c 50) aparecem pedidos do index.html
+	com erro 400
+6.
+	quanto menos concorrência escolhermos no ab, mais rápidas são as respostas (WHY?!)
+7.
+	pedir ao servidor a lista da pasta root e depois usar o link de uma das pastas
+	(só uma delas é que faz isto e não é sempre a mesma) faz aparecer um erro 400
+	uns segundos depois de clicar no link dessa pasta
+8.
+	o meu programa de teste crasha o projecto com qqr numero de pedidos
+	(update: é porque o meu programa de teste faz apenas 1 read e fecha o socket,
+	como o index.html obriga a vários writes eventualmente um dos writes vai falhar 
+	porque o cliente fez 1 read e fechou o socket. -- estou a tentar perceber como 
+	evitar que isso mande o servidor abaixo)
+9.
+	o erro 404 já não apaga a string 'path_ficheiro', porque isso fazia com que os 
+	pedidos com erro 404 não imprimissem no terminal o ficheiro pedido
+
+10.
+	programa crasha quando chega a +-1024 pedidos
+

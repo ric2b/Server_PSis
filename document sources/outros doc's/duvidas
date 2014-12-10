@@ -1,0 +1,24 @@
+1.
+	mandar pedidos de timer-10s faz com que o fork deixe de
+	funcionar, sem avisar de erro
+2.
+	mandar muitos pedidos concorrentes acaba por causar broken pipes
+3.
+	porque é preciso limpar a string do pedido depois de chamar um CGI com 
+	um nome maior que o CGI que é chamado a seguir se é um socket novo e
+	 outra instância da função?
+4. 
+	==17127== Syscall param write(buf) points to uninitialised byte(s)
+	==17127==    at 0x405888B: ??? (syscall-template.S:81)
+	==17127==    by 0x804AE7F: atende_cliente (threads.c:9)
+	==17127==    by 0x4051D77: start_thread (pthread_create.c:311)
+	==17127==    by 0x416201D: clone (clone.S:131)
+	==17127==  Address 0x466a3701 is on thread 129's stack
+	==17127==  Uninitialised value was created by a stack allocation
+	==17127==    at 0x80497C1: analisa_pedido (pedidos.c:5)
+5. 
+	threads não limpam bem a meio de pedidos
+6.
+	como aguentar mais pedidos? abrir novas threads não ajuda muito e até torna o programa ligeiramente mais lento
+7. 
+	como evitar lixo no terminal se tentar executar um ficheiro não executável? 

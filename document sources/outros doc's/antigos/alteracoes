@@ -1,0 +1,10 @@
+'analisa pedidos' escreve num FIFO os dados do pedido que acabou de tratar, 
+a 'guarda_estatisticas' lê essas informações e acrescenta à lista.
+
+a variável counter tem o número de pedidos presentes na lista, quando chega a 1000 começa a libertar o pedido mais antigo quando recebe um novo
+
+a data e hora do pedido são obtidas na 'analisa pedidos', mesmo por cima do read, convertendo a estrutura time_t que recebe do main.
+
+o ponteiro 'first' das estatisticas é uma variável global para se poder percorrer e imprimir a lista noutras funções 
+
+no analisa pedidos acrescentei as verificações de nome_ficheiro == "/estatisticas/Pedidos" ou nome_ficheiro == "/estatisticas/ClearAll"

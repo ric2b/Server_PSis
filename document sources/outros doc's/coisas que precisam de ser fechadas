@@ -1,0 +1,13 @@
+	-server_socket
+client_socket (multiplos)
+	-lista de estatisticas
+	-thread das estatisticas
+	-lista de threads
+	-as threads
+	-fifo_cfd
+	-fifo_estatistica
+ficheiros abertos pelas threads
+cgi's que estiverem a correr
+	-directorias do opendir
+
+ 

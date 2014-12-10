@@ -1,0 +1,5 @@
+2.
+	mandar muitos pedidos concorrentes acaba por causar broken pipes ou outros erros
+6.
+	como aguentar mais pedidos? abrir novas threads não ajuda muito e até torna o programa ligeiramente mais lento
+ 
