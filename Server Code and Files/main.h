@@ -42,6 +42,8 @@ typedef struct info_estatistica{
 char DOCUMENT_ROOT[BUFFSIZE];
 char CGI_ROOT[BUFFSIZE];
 
+char extIP[BUFFSIZE];
+
 int fifo_fd;
 int fifo_estatistica;
 int server_socket;

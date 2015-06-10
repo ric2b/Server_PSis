@@ -1,5 +1,7 @@
 #include "main.h"
 
+char extIP[BUFFSIZE] = "NoneDefined";
+
 int main(int argc, char * argv[]){
 	
 	int i;
@@ -19,6 +21,12 @@ int main(int argc, char * argv[]){
 	strcpy(DOCUMENT_ROOT, "http_docs"); // por default a directoria base do servidor é http_docs
 	strcpy(CGI_ROOT, "\0");
 	
+	if(argc == 2)
+	{
+		strcpy(extIP, argv[1]);
+		printf("using the user defined external IP: %s\n", extIP);
+	}
+
 	carrega_config(); // rotina associada a carregar ficheiro "www.config" 
 			
 	server_socket = criar_socket(); // rotina associada a criar socket do servidor 

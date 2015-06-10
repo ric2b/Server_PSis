@@ -247,7 +247,12 @@ void envia_pedido(int client_fd, int * codigo, int cgi, char content_type[10], c
 								}
 								strcpy(directoria_temp, nome_ficheiro);
 								strcat(directoria_temp, ficheiro_na_dir);
-								gethostname(host_name, BUFFSIZE); // retirar o nome do cliente
+								
+								if(strcmp(extIP,"NoneDefined"))
+									strcpy(host_name, extIP);
+								else									
+									gethostname(host_name, BUFFSIZE); // retirar o nome do cliente
+
 								sprintf(mensagem, "<a href=\"http://%s:8080%s\">%s</a><br>", host_name, directoria_temp, ficheiro_na_dir); // imprimir numa string o ficheiro/directoria listado pelo ls, com link
 								write(client_fd, mensagem, strlen(mensagem)); // escreve na socket do cliente a mensagem a enviar para o browser
 							}
