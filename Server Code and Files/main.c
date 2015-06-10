@@ -1,6 +1,7 @@
 #include "main.h"
 
 char extIP[BUFFSIZE] = "NoneDefined";
+int portnumber = 8080;
 
 int main(int argc, char * argv[]){
 	

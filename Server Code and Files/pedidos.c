@@ -253,7 +253,7 @@ void envia_pedido(int client_fd, int * codigo, int cgi, char content_type[10], c
 								else									
 									gethostname(host_name, BUFFSIZE); // retirar o nome do cliente
 
-								sprintf(mensagem, "<a href=\"http://%s:8080%s\">%s</a><br>", host_name, directoria_temp, ficheiro_na_dir); // imprimir numa string o ficheiro/directoria listado pelo ls, com link
+								sprintf(mensagem, "<a href=\"http://%s:%d%s\">%s</a><br>", host_name, port_number, directoria_temp, ficheiro_na_dir); // imprimir numa string o ficheiro/directoria listado pelo ls, com link
 								write(client_fd, mensagem, strlen(mensagem)); // escreve na socket do cliente a mensagem a enviar para o browser
 							}
 							/* garantir que a socket do cliente é fechada */

@@ -3,7 +3,6 @@
 /* rotina responsável por criar a socket do servidor que irá escutar os clientes */
 int criar_socket(){
 	
-	int port_number;
 	int server_socket;
 	struct sockaddr_in server_addr;
 	
