@@ -69,7 +69,7 @@ void analisa_pedido(info_pedido dados_cliente){
 								else if((ponto = strrchr(nome_ficheiro, '.')) != NULL){
 								// pedido inclui um ponto  
 									codigo = 415; // variável de código do pedido inicializada aqui a 415
-									if(strcmp(ponto, ".html") == 0 || strcmp(ponto, ".png") == 0 || strcmp(ponto, ".ico") == 0){
+									if(!strcmp(ponto, ".html") || !strcmp(ponto, ".png") || !strcmp(ponto, ".ico") || !strcmp(ponto, ".pdf")){
 									// ficheiro pedido é do tipo ".html", ".png" ou ".ico"
 										if (strcmp(ponto, ".html") == 0){ // é do tipo ".html"
 											strcpy(content_type, "text/html");
@@ -93,6 +93,16 @@ void analisa_pedido(info_pedido dados_cliente){
 										}
 										if (strcmp(ponto, ".ico") == 0){ // é do tipo ".ico"
 											strcpy(content_type, "image/ico");
+											fp = fopen(path_ficheiro, "rb"); // abrir o ficheiro em modo READ BINARY (por se tratar de uma imagem)
+											if(fp != NULL){ // verificar se o ficheiro existe
+												codigo = 200; // se sim a variável de código passa a ser 200
+											}
+											else{
+												codigo = 404; // se não a variável de código passa a ser 404 
+											}
+										}
+										if (strcmp(ponto, ".pdf") == 0){ // é do tipo ".png"
+											strcpy(content_type, "application/pdf");
 											fp = fopen(path_ficheiro, "rb"); // abrir o ficheiro em modo READ BINARY (por se tratar de uma imagem)
 											if(fp != NULL){ // verificar se o ficheiro existe
 												codigo = 200; // se sim a variável de código passa a ser 200
@@ -148,6 +158,7 @@ void envia_pedido(int client_fd, int * codigo, int cgi, char content_type[10], c
 	char html_padrao[30];
 	char png_padrao[30];
 	char ico_padrao[30];
+	char pdf_padrao[30];
 	char buffer_image[BUFFSIZE];
 	int buffer_char;
 	char buffer_dir[BUFFSIZE];
@@ -166,6 +177,7 @@ void envia_pedido(int client_fd, int * codigo, int cgi, char content_type[10], c
 	strcpy(html_padrao, "Content-type: text/html\n\n");
 	strcpy(png_padrao, "Content-type: image/png\n\n");
 	strcpy(ico_padrao, "Content-type: image/ico\n\n");
+	strcpy(pdf_padrao, "Content-type: application/pdf\n\n");
 	
 	if(versao_http == '0'){
 		strcpy(http, "HTTP/1.0");
@@ -345,6 +357,16 @@ void envia_pedido(int client_fd, int * codigo, int cgi, char content_type[10], c
 						}
 						if(strcmp(content_type, "image/ico") == 0){ // pedido é para um ficheiro ".ico"
 							strcat(http, ico_padrao); 
+							write(client_fd, http, strlen(http));
+							while((fread(buffer_image, 1, sizeof(buffer_image), fp)) > 0){ // ler caracter a caracter do ficheiro png pedido
+								if((write(client_fd, &buffer_image, sizeof(buffer_image))) < 1){ // escrever na socket do cliente caracter a caracter	
+									perror("write");
+									break; // se algum caracter falhar na escrita então esta é interrompida
+								}		
+							}	
+						}
+						if(strcmp(content_type, "application/pdf") == 0){ // pedido é para um ficheiro ".pdf"
+							strcat(http, pdf_padrao); 
 							write(client_fd, http, strlen(http));
 							while((fread(buffer_image, 1, sizeof(buffer_image), fp)) > 0){ // ler caracter a caracter do ficheiro png pedido
 								if((write(client_fd, &buffer_image, sizeof(buffer_image))) < 1){ // escrever na socket do cliente caracter a caracter	
