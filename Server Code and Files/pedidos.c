@@ -149,7 +149,7 @@ void envia_pedido(int client_fd, int * codigo, int cgi, char content_type[10], c
 	char png_padrao[30];
 	char ico_padrao[30];
 	char buffer_image[BUFFSIZE];
-	char buffer_char;
+	int buffer_char;
 	char buffer_dir[BUFFSIZE];
 	char directoria[BUFFSIZE];
 	char directoria_temp[BUFFSIZE];
@@ -325,25 +325,14 @@ void envia_pedido(int client_fd, int * codigo, int cgi, char content_type[10], c
 						if(strcmp(content_type, "text/html") == 0){ // pedido é para um ficheiro ".html"
 							strcat(http, html_padrao); 
 							write(client_fd, http, strlen(http));
-							while(((int)(buffer_char = getc(fp))) != EOF){ // ler caracter a caracter do ficheiro html pedido
+							while((buffer_char = getc(fp)) != EOF){ // ler caracter a caracter do ficheiro html pedido
 								if((write(client_fd, &buffer_char, 1)) < 1){ // escrever na socket do cliente caracter a caracter				
 									perror("write");
 									break; // se algum caracter falhar na escrita então esta é interrompida
 								}		
-							}							
+							}
 						}
-						
-/*						if(strcmp(content_type, "text/html") == 0){ // pedido é para um ficheiro ".png"
-							strcat(http, html_padrao); 
-							write(client_fd, http, strlen(http));
-							while((fread(buffer_image, 1, sizeof(buffer_image), fp)) > 0){ // ler caracter a caracter do ficheiro png pedido
-								if((write(client_fd, &buffer_image, sizeof(buffer_image))) < 1){ // escrever na socket do cliente caracter a caracter	
-									perror("write");
-									break; // se algum caracter falhar na escrita então esta é interrompida
-								}		
-							}	
-						}
-*/
+
 						if(strcmp(content_type, "image/png") == 0){ // pedido é para um ficheiro ".png"
 							strcat(http, png_padrao); 
 							write(client_fd, http, strlen(http));
